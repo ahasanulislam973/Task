@@ -1,0 +1,117 @@
+<?php
+session_start();
+require_once './config/config.php';
+//require_once './lib/functions.php';
+require_once './config/service_config.php';
+require_once './secure.php';
+
+if (!checkAuthenticLogin()) {
+    $_SESSION['continue'] = $currentUrl;
+    header('Location: ' . $loginUrl);
+    exit;
+}
+date_default_timezone_set("Asia/Dhaka");
+$todayDate = date("Y-m-d", time());
+$yesterdayDate = date('Y-m-d', strtotime($todayDate . ' - 1 days'));
+$b4YesterdayDate = date('Y-m-d', strtotime($todayDate . ' - 2 days'));
+
+$pageTitle = "Admin Index";
+$tabActive = "dashboard";
+
+$organizationId = $_SESSION['admin_login_info']['organization_id'];
+
+include_once INCLUDE_DIR . 'header.php';
+
+
+?>
+
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper">
+
+        <div class="row">
+            <div class="col-md-12">
+                <?php if (isset($_SESSION['successMsg'])) { ?>
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> <br>
+                        <?php
+                        echo $_SESSION['successMsg'];
+                        unset($_SESSION['successMsg']);
+                        ?>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+
+
+        <?php
+        switch ($organizationId) {
+            case 0:
+                include 'dasborad_content/regular_content_push_service_count.php';
+                include 'dasborad_content/tht_user_count.php';
+
+                /*service graphical representation start*/
+                include 'dasborad_content/tht_summary_table_line_chart.php';
+                /*service graphical representation end*/
+
+                /*last 2 hours active user & top 5 scorer start*/
+                include 'dasborad_content/quiz_2hours_tables.php';
+                /*last 2 hours active user & top 5 scorer end */
+                break;
+
+            case 1:
+            case 2:
+                include 'dasborad_content/regular_content_push_service_count.php';
+
+                /*last 2 hours active user & top 5 scorer start*/
+                include 'dasborad_content/quiz_2hours_tables.php';
+                /*last 2 hours active user & top 5 scorer end */
+                break;
+
+            case 3:
+                echo '<h1>   সব বন্ধ! সব বন্ধ! সব বন্ধ করে দিসি ..............</h1>';
+                break;
+
+            case 4:
+                include 'dasborad_content/tht_user_count.php';
+
+                /*service graphical representation start*/
+                include 'dasborad_content/tht_summary_table_line_chart.php';
+                /*service graphical representation end*/
+
+                /*last 2 hours active user & top 5 scorer start*/
+                include 'dasborad_content/quiz_2hours_tables.php';
+                /*last 2 hours active user & top 5 scorer end */
+                break;
+
+            case 6:
+                /*last 2 hours active user & top 5 scorer start*/
+                include 'dasborad_content/quiz_2hours_tables.php';
+                /*last 2 hours active user & top 5 scorer end */
+                break;
+            case 7:
+                echo '<h1>   সব বন্ধ! সব বন্ধ! সব বন্ধ করে দিসি ..............</h1>';
+                break;
+            case 8:
+                // echo '<h1> Dashboard </h1>';
+                // break;
+                include 'dasborad_content/tht_user_count.php';
+
+                /*service graphical representation start*/
+                include 'dasborad_content/tht_summary_table_line_chart.php';
+                /*service graphical representation end*/
+
+                /*last 2 hours active user & top 5 scorer start*/
+                include 'dasborad_content/quiz_2hours_tables.php';
+                /*last 2 hours active user & top 5 scorer end */
+                break;
+        }
+
+        ?>
+
+
+    </section>
+</section>
+<!--main content end-->
+
+<?php include_once INCLUDE_DIR . 'footer.php'; ?>

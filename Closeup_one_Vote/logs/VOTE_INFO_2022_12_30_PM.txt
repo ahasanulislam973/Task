@@ -1,0 +1,25 @@
+"22-12-30 09:45:12"{
+    "mobile_number": "01725724522",
+    "message": "vote_E"
+}"22-12-30 09:53:43"{
+    "mobile_number": "01725724521",
+    "message": "vote_D"
+}"22-12-30 09:57:03"{
+    "mobile_number": "01725724523",
+    "message": "vote_G"
+}"22-12-30 09:57:19"{
+    "mobile_number": "01725724524",
+    "message": "vote_H"
+}"22-12-30 09:57:28"{
+    "mobile_number": "01725724525",
+    "message": "vote_H"
+}"22-12-30 09:57:38"{
+    "mobile_number": "01725724526",
+    "message": "vote_H"
+}"22-12-30 09:57:58"{
+    "mobile_number": "01725724527",
+    "message": "vote_I"
+}"22-12-30 09:58:16"{
+    "mobile_number": "01725724528",
+    "message": "vote_J"
+}

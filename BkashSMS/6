@@ -1,0 +1,10 @@
+<?php
+// $string=$_GET['input'];
+$string="your bkash buy airtime request of tk 300.00 for 01750000327 was successful.";
+
+
+echo "The main string message is:"."<br>".$string;
+
+$newstring=explode(' ',$string);
+echo "<pre>";
+print_r ($newstring);
